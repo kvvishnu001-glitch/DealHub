@@ -1,14 +1,56 @@
 version: 1.0
-runtime: python311 # Specify the Python 3.11 runtime
+runtime: python311
+
 build:
   commands:
+    pre-build:
+      # Install Node.js for frontend build
+      - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+      - apt-get install -y nodejs
     build:
-      - echo "Building frontend..."
-      - npm install --prefix client
-      - npm run build --prefix client
-      - echo "Installing backend dependencies..."
-      - pip install -r python_backend/requirements.txt
+      # Build frontend first
+      - npm install
+      - npm run build
+      # Install Python dependencies
+      - pip3 install --upgrade pip
+      - pip3 install fastapi uvicorn[standard] sqlalchemy asyncpg psycopg2-binary python-dotenv pydantic alembic aiohttp bcrypt requests schedule openpyxl pandas xlrd python-jose python-multipart openai
+    post-build:
+      # Verify build outputs
+      - ls -la client/dist/
+      - ls -la python_backend/
+  env:
+    - name: NODE_ENV
+      value: "production"
+    - name: ENVIRONMENT
+      value: "production"
+
 run:
-  command: uvicorn python_backend.app:app --host 0.0.0.0 --port 8080
+  runtime-version: 3.11
+  command: "cd python_backend && python -m uvicorn app:app --host 0.0.0.0 --port 8000"
   network:
-    port: 8080
+    port: 8000
+    env: PORT
+  env:
+    - name: ENVIRONMENT
+      value: "production"
+    - name: PYTHONPATH
+      value: "/app"
+    - name: PYTHONDONTWRITEBYTECODE
+      value: "1"
+    - name: PYTHONUNBUFFERED
+      value: "1"
+  secrets:
+    - name: DATABASE_URL
+      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/database-url"
+    - name: OPENAI_API_KEY
+      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/openai-api-key"
+    - name: PGDATABASE
+      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-db"
+    - name: PGHOST
+      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-host"
+    - name: PGPASSWORD
+      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-password"
+    - name: PGPORT
+      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-port"
+    - name: PGUSER
+      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-user"
