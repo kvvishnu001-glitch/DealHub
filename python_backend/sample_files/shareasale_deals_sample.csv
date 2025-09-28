@@ -1,0 +1,6 @@
+title,description,sale_price,original_price,discount_percentage,image_url,affiliate_url,store,category,rating,deal_type,needs_ai_review
+Wireless Mouse,Ergonomic wireless mouse with precision tracking,29.99,49.99,40,https://example.com/mouse.jpg,https://shareasale.com/r.cfm?b=123,TechStore,Electronics,4.2,hot,false
+Designer Sunglasses,Premium polarized sunglasses with UV protection,99.99,199.99,50,https://example.com/sunglasses.jpg,https://shareasale.com/r.cfm?b=124,FashionHub,Fashion,4.6,top,true
+Programming Guide,Complete guide to modern web development frameworks,39.99,59.99,33,https://example.com/book.jpg,https://shareasale.com/r.cfm?b=125,BookWorld,Books,4.8,latest,false
+Wall Art Set,Modern abstract wall art set of 3 canvas prints,89.99,149.99,40,https://example.com/art.jpg,https://shareasale.com/r.cfm?b=126,HomeDecor,Home Decor,4.4,hot,true
+Dog Training Kit,Complete dog training kit with clicker and treats,24.99,39.99,37,https://example.com/dog.jpg,https://shareasale.com/r.cfm?b=127,PetSupply,Pet Supplies,4.5,latest,false

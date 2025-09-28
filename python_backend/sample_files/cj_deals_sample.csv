@@ -1,0 +1,6 @@
+title,description,sale_price,original_price,discount_percentage,image_url,affiliate_url,store,category,rating,deal_type,needs_ai_review
+Nike Running Shoes,Lightweight running shoes with air cushioning technology,89.99,119.99,25,https://example.com/nike.jpg,https://cj.com/click/12345,Nike,Footwear,4.5,hot,false
+Canon DSLR Camera,Professional DSLR camera with 24MP sensor and Wi-Fi,599.99,799.99,25,https://example.com/canon.jpg,https://cj.com/click/12346,Canon,Electronics,4.7,top,true
+Skincare Set Premium,Complete 5-step skincare routine with natural ingredients,79.99,119.99,33,https://example.com/skincare.jpg,https://cj.com/click/12347,GlowCare,Beauty,4.3,latest,false
+Kitchen Knife Set,Professional chef knife set with wooden block storage,129.99,199.99,35,https://example.com/knives.jpg,https://cj.com/click/12348,ChefMaster,Home & Kitchen,4.6,hot,true
+Gaming Headset,Surround sound gaming headset with noise canceling microphone,69.99,99.99,30,https://example.com/gaming.jpg,https://cj.com/click/12349,GameTech,Gaming,4.4,latest,false

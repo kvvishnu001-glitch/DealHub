@@ -1,0 +1,1 @@
+console.log('Deals fetched:', deals); console.log('Filtered deals:', filteredDeals); console.log('Top deals:', topDeals); console.log('Hot deals:', hotDeals); console.log('Latest deals:', latestDeals);
