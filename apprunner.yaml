@@ -39,18 +39,4 @@ run:
       value: "1"
     - name: PYTHONUNBUFFERED
       value: "1"
-  secrets:
-    - name: DATABASE_URL
-      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/database-url"
-    - name: OPENAI_API_KEY
-      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/openai-api-key"
-    - name: PGDATABASE
-      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-db"
-    - name: PGHOST
-      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-host"
-    - name: PGPASSWORD
-      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-password"
-    - name: PGPORT
-      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-port"
-    - name: PGUSER
-      value-from: "arn:aws:secretsmanager:us-east-1:100024682306:secret:dealsphere/postgres-user"
+      
