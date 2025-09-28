@@ -1,42 +1,30 @@
 version: 1.0
 runtime: python311
-
 build:
   commands:
     pre-build:
-      # Install Node.js for frontend build
-      - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-      - apt-get install -y nodejs
-    build:
-      # Build frontend first
+      # Install Node.js 18 for frontend build
+      - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      - sudo apt-get install -y nodejs
+      # Build React frontend
+      - cd client
       - npm install
       - npm run build
+      - cd ..
+    build:
       # Install Python dependencies
-      - pip3 install --upgrade pip
-      - pip3 install fastapi uvicorn[standard] sqlalchemy asyncpg psycopg2-binary python-dotenv pydantic alembic aiohttp bcrypt requests schedule openpyxl pandas xlrd python-jose python-multipart openai
-    post-build:
-      # Verify build outputs
-      - ls -la client/dist/
-      - ls -la python_backend/
+      - pip3 install -r requirements.txt
   env:
-    - name: NODE_ENV
-      value: "production"
+    - name: PORT
+      value: "8000"
     - name: ENVIRONMENT
       value: "production"
-
 run:
-  runtime-version: 3.11
-  command: "cd python_backend && python -m uvicorn app:app --host 0.0.0.0 --port 8000"
+  runtime-version: '3.11'
+  command: cd python_backend && python3 app.py
   network:
     port: 8000
     env: PORT
   env:
-    - name: ENVIRONMENT
-      value: "production"
-    - name: PYTHONPATH
-      value: "/app"
-    - name: PYTHONDONTWRITEBYTECODE
-      value: "1"
-    - name: PYTHONUNBUFFERED
-      value: "1"
-      
+    - name: PORT
+      value: "8000"
